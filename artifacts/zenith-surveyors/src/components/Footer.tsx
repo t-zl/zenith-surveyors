@@ -14,8 +14,7 @@ export function Footer() {
               />
             </div>
             <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
-              Independent, expert building surveying services across County
-              Mayo, providing clarity and confidence in property decisions.
+              Independent, expert building surveying services across Ireland, providing clarity and confidence in property decisions.
             </p>
           </div>
 
@@ -46,6 +45,14 @@ export function Footer() {
                   className="text-muted-foreground hover:text-accent transition-colors text-sm"
                 >
                   About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#testimonials"
+                  className="text-muted-foreground hover:text-accent transition-colors text-sm"
+                >
+                  Reviews
                 </a>
               </li>
               <li>
