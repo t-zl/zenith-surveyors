@@ -45,3 +45,8 @@ Thumbs.db
 # local runtime artifacts
 .local/
 
+# environment variables (contain secrets)
+.env
+.env.local
+.env.*.local
+
