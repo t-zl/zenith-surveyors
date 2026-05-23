@@ -5,7 +5,7 @@ export function About() {
   const highlights = [
     "Independent & Impartial Advice",
     "Registered Building Surveyor",
-    "Local Knowledge of County Mayo",
+    "Nationwide Coverage. Local Expertise.",
     "Comprehensive & Clear Reporting"
   ];
 
@@ -46,11 +46,11 @@ export function About() {
             </h2>
             
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Based in County Mayo, Zenith Building Surveyors brings over a decade of combined experience to every property assessment. We understand that buying, building, or managing property is one of life's most significant investments.
+              Based in County Mayo with a dedicated Dublin presence, Zenith Building Surveyors provides comprehensive technical expertise across the Republic of Ireland. We understand that buying, building, or managing property is one of life's most significant investments.
             </p>
-            
+
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Our mission is simple: to provide absolute clarity regarding the condition and potential of your building. We combine advanced surveying techniques with local knowledge to deliver reports you can truly rely on.
+              Our mission is simple: to provide absolute clarity regarding the condition and potential of your building. We combine advanced surveying techniques with deep local knowledge to deliver reports you can truly rely on.
             </p>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">

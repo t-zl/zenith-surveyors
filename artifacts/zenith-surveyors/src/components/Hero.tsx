@@ -45,7 +45,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl"
           >
-            Professional building surveying services for residential and commercial properties across County Mayo. Delivering detailed, independent, and reliable property insights.
+            Professional building surveying services for residential and commercial properties across the Republic of Ireland. Based in County Mayo with a dedicated Dublin presence, we deliver detailed, independent, and reliable property insights.
           </motion.p>
 
           <motion.div

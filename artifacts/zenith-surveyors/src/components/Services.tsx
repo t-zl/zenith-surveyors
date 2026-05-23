@@ -12,7 +12,7 @@ const services = [
   {
     icon: Home,
     title: "Pre-Purchase Surveys",
-    description: "Comprehensive homebuyer reports highlighting potential issues and necessary repairs before you finalize your property purchase."
+    description: "Comprehensive homebuyer reports highlighting potential issues and necessary repairs before you finalise your property purchase."
   },
   {
     icon: ClipboardList,
