@@ -7,6 +7,7 @@ import {
   ScrollText, 
   Calculator 
 } from "lucide-react";
+import { PricingDialog } from "@/components/PricingDialog";
 
 const services = [
   {
@@ -84,6 +85,9 @@ export function Services() {
               <p className="text-muted-foreground leading-relaxed">
                 {service.description}
               </p>
+              {service.title === "Pre-Purchase Surveys" && (
+                <PricingDialog />
+              )}
             </motion.div>
           ))}
         </div>
