@@ -48,5 +48,9 @@ Thumbs.db
 # environment variables (contain secrets)
 .env
 .env.local
+.dev.vars
+
+# wrangler local cache
+.wrangler/
 .env.*.local
 

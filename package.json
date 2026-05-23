@@ -9,15 +9,19 @@
   "scripts": {
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
     "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
+    "dev:pages": "wrangler pages dev --proxy 5173 --compatibility-date=2026-05-23"
   },
   "private": true,
   "devDependencies": {
     "prettier": "^3.8.1",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "wrangler": "^4.93.1"
   },
   "dependencies": {
     "@tailwindcss/oxide-win32-x64-msvc": "^4.2.4",
-    "lightningcss-win32-x64-msvc": "^1.32.0"
+    "lightningcss-win32-x64-msvc": "^1.32.0",
+    "resend": "^4",
+    "zod": "^3"
   }
 }
