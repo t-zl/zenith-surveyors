@@ -86,12 +86,9 @@ components:
     ContactSubmissionResponse:
       type: object
       properties:
-        id:
-          type: integer
         message:
           type: string
       required:
-        - id
         - message
     ErrorResponse:
       type: object

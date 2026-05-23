@@ -7,6 +7,5 @@
  */
 
 export interface ContactSubmissionResponse {
-  id: number;
   message: string;
 }

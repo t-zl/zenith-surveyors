@@ -3,19 +3,12 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { useSubmitContact } from "@workspace/api-client-react";
+import { SubmitContactBody } from "@workspace/api-zod";
+import type { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 
-const formSchema = z.object({
-  name: z.string().min(1, "Name is required").max(200),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().max(50).optional(),
-  subject: z.string().max(200).optional(),
-  message: z.string().min(1, "Message is required").max(5000),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+type FormValues = z.infer<typeof SubmitContactBody>;
 
 export function Contact() {
   const { toast } = useToast();
@@ -44,7 +37,7 @@ export function Contact() {
     reset,
     formState: { errors },
   } = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(SubmitContactBody),
   });
 
   const onSubmit = (data: FormValues) => {
@@ -61,7 +54,7 @@ export function Contact() {
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px -60px 0px" }}
             className="lg:col-span-5 bg-primary text-primary-foreground p-10 md:p-14 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white opacity-5 mix-blend-overlay" />
@@ -116,7 +109,7 @@ export function Contact() {
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px -60px 0px" }}
             className="lg:col-span-7 p-10 md:p-14"
           >
             <h3 className="text-2xl font-display font-bold text-foreground mb-8">Send a Message</h3>
