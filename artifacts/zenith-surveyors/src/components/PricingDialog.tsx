@@ -10,7 +10,34 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-const tiers = [
+function scrollToContact(e: React.MouseEvent<HTMLAnchorElement>) {
+  e.preventDefault();
+  window.history.pushState(null, "", window.location.pathname);
+  const target = document.querySelector("#contact");
+  if (!target) return;
+  const header = document.querySelector("header");
+  const offset = header ? header.offsetHeight : 80;
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: "smooth" });
+}
+
+interface PricingTier {
+  name: string;
+  price: string;
+  note?: string;
+  popular?: boolean;
+  features: string[];
+}
+
+interface PricingDialogProps {
+  trigger?: React.ReactNode;
+  title?: string;
+  subtitle?: string;
+  tiers?: PricingTier[];
+  footerNote?: string;
+}
+
+const defaultTiers: PricingTier[] = [
   {
     name: "Apartment / Studio",
     price: "€450",
@@ -54,11 +81,13 @@ const tiers = [
   },
 ];
 
-interface PricingDialogProps {
-  trigger?: React.ReactNode;
-}
-
-export function PricingDialog({ trigger }: PricingDialogProps) {
+export function PricingDialog({
+  trigger,
+  title = "Pre-Purchase Structural Survey Pricing",
+  subtitle = "Transparent pricing based on property type. All prices include VAT. Final quote confirmed on enquiry.",
+  tiers = defaultTiers,
+  footerNote = "Prices are indicative. Properties with extensions, outbuildings, or unusually complex construction may be subject to an adjusted quote. Contact us for a free, no-obligation discussion.",
+}: PricingDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -71,18 +100,17 @@ export function PricingDialog({ trigger }: PricingDialogProps) {
       <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto p-6 sm:p-8">
         <DialogHeader className="mb-2">
           <DialogTitle className="text-2xl font-display font-bold">
-            Pre-Purchase Structural Survey Pricing
+            {title}
           </DialogTitle>
           <p className="text-muted-foreground text-sm mt-1">
-            Transparent pricing based on property type. All prices
-            include VAT. Final quote confirmed on enquiry.
+            {subtitle}
           </p>
         </DialogHeader>
 
         <Separator className="my-4" />
 
         <div className="flex flex-col gap-4">
-          {tiers.map((tier, index) => (
+          {tiers.map((tier) => (
             <div
               key={tier.name}
               className="rounded-2xl border border-border bg-card p-5"
@@ -102,7 +130,7 @@ export function PricingDialog({ trigger }: PricingDialogProps) {
                     {tier.price}
                   </span>
                   <DialogClose asChild>
-                    <a href="#contact">
+                    <a href="#contact" onClick={scrollToContact}>
                       <Button variant="outline" size="sm">
                         Get a Quote
                       </Button>
@@ -126,9 +154,7 @@ export function PricingDialog({ trigger }: PricingDialogProps) {
         </div>
 
         <p className="text-xs text-muted-foreground text-center mt-6">
-          Prices are indicative. Properties with extensions, outbuildings, or
-          unusually complex construction may be subject to an adjusted quote.
-          Contact us for a free, no-obligation discussion.
+          {footerNote}
         </p>
       </DialogContent>
     </Dialog>

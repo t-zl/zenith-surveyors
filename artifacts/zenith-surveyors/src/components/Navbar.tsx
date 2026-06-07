@@ -17,11 +17,19 @@ export function Navbar() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const target = href === "#" ? document.body : document.querySelector(href);
     // Keep URL clean — no hash fragments in the address bar
     window.history.pushState(null, "", window.location.pathname);
     setTimeout(() => {
-      target?.scrollIntoView({ behavior: "smooth" });
+      if (href === "#") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      const target = document.querySelector(href);
+      if (!target) return;
+      const header = document.querySelector("header");
+      const offset = header ? header.offsetHeight : 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
     }, 50);
   };
 

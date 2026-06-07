@@ -1,3 +1,18 @@
+function handleFooterNavClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+  e.preventDefault();
+  window.history.pushState(null, "", window.location.pathname);
+  if (href === "#") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  const target = document.querySelector(href);
+  if (!target) return;
+  const header = document.querySelector("header");
+  const offset = header ? header.offsetHeight : 80;
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: "smooth" });
+}
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -26,6 +41,7 @@ export function Footer() {
               <li>
                 <a
                   href="#"
+                  onClick={(e) => handleFooterNavClick(e, "#")}
                   className="text-muted-foreground hover:text-accent transition-colors text-sm"
                 >
                   Home
@@ -34,6 +50,7 @@ export function Footer() {
               <li>
                 <a
                   href="#services"
+                  onClick={(e) => handleFooterNavClick(e, "#services")}
                   className="text-muted-foreground hover:text-accent transition-colors text-sm"
                 >
                   Our Services
@@ -42,6 +59,7 @@ export function Footer() {
               <li>
                 <a
                   href="#about"
+                  onClick={(e) => handleFooterNavClick(e, "#about")}
                   className="text-muted-foreground hover:text-accent transition-colors text-sm"
                 >
                   About Us
@@ -50,6 +68,7 @@ export function Footer() {
               <li>
                 <a
                   href="#testimonials"
+                  onClick={(e) => handleFooterNavClick(e, "#testimonials")}
                   className="text-muted-foreground hover:text-accent transition-colors text-sm"
                 >
                   Reviews
@@ -58,6 +77,7 @@ export function Footer() {
               <li>
                 <a
                   href="#contact"
+                  onClick={(e) => handleFooterNavClick(e, "#contact")}
                   className="text-muted-foreground hover:text-accent transition-colors text-sm"
                 >
                   Contact

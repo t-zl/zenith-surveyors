@@ -9,6 +9,39 @@ import {
 } from "lucide-react";
 import { PricingDialog } from "@/components/PricingDialog";
 
+const snagListTiers = [
+  {
+    name: "Apartment Snag",
+    price: "€219",
+    popular: false,
+    features: [
+      "Snag List to inspect quality of finish",
+      "External areas inspected",
+      "Written Snag List includes images of each snag identified"
+    ],
+  },
+  {
+    name: "Duplex Snag",
+    price: "€263",
+    popular: false,
+    features: [
+      "Snag List to inspect quality of finish",
+      "External areas inspected",
+      "Written Snag List includes images of each snag identified"
+    ],
+  },
+  {
+    name: "House Snag",
+    price: "€299",
+    popular: false,
+    features: [
+      "Snag List to inspect quality of finish",
+      "External areas inspected",
+      "Written Snag List includes images of each snag identified"
+    ],
+  },
+];
+
 const services = [
   {
     icon: Home,
@@ -87,6 +120,14 @@ export function Services() {
               </p>
               {service.title === "Pre-Purchase Surveys" && (
                 <PricingDialog />
+              )}
+              {service.title === "Snag Lists" && (
+                <PricingDialog
+                  title="Snag List Inspection Pricing"
+                  subtitle="Transparent pricing based on property size. All prices include VAT."
+                  tiers={snagListTiers}
+                  footerNote="Prices are indicative. Large or complex developments may be subject to an adjusted quote. Contact us for a free, no-obligation discussion."
+                />
               )}
             </motion.div>
           ))}

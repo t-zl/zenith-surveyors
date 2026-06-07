@@ -64,6 +64,16 @@ export function About() {
 
             <a
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState(null, "", window.location.pathname);
+                const target = document.querySelector("#contact");
+                if (!target) return;
+                const header = document.querySelector("header");
+                const offset = header ? header.offsetHeight : 80;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: "smooth" });
+              }}
               className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary/90 transition-all duration-300"
             >
               Book My Survey
