@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
+function scrollToSection(href: string) {
+  window.history.pushState(null, "", window.location.pathname);
+  const target = document.querySelector(href);
+  if (!target) return;
+  const header = document.querySelector("header");
+  const offset = header ? header.offsetHeight : 80;
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: "smooth" });
+}
+
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-primary">
@@ -56,6 +66,7 @@ export function Hero() {
           >
             <a
               href="#contact"
+              onClick={(e) => { e.preventDefault(); scrollToSection("#contact"); }}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-accent text-accent-foreground font-bold text-lg shadow-lg shadow-accent/20 hover:shadow-xl hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300"
             >
               Request a Survey
@@ -63,6 +74,7 @@ export function Hero() {
             </a>
             <a
               href="#services"
+              onClick={(e) => { e.preventDefault(); scrollToSection("#services"); }}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/10 text-white border border-white/20 font-semibold text-lg hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
             >
               Explore Services
@@ -77,7 +89,7 @@ export function Hero() {
         transition={{ delay: 1, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce"
       >
-        <a href="#services" aria-label="Scroll down">
+        <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection("#services"); }} aria-label="Scroll down">
           <ChevronDown className="w-8 h-8 text-white/50 hover:text-white transition-colors" />
         </a>
       </motion.div>
