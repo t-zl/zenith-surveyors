@@ -66,7 +66,7 @@ export function About() {
               href="#contact"
               className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary/90 transition-all duration-300"
             >
-              Contact Our Team
+              Book My Survey
             </a>
           </motion.div>
         </div>

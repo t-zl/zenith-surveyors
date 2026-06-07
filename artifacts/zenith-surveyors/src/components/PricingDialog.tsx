@@ -13,8 +13,7 @@ import { Separator } from "@/components/ui/separator";
 const tiers = [
   {
     name: "Apartment / Studio",
-    price: "From €350",
-    note: "Up to ~60 m²",
+    price: "€450",
     popular: false,
     features: [
       "Full structural & fabric inspection",
@@ -27,8 +26,8 @@ const tiers = [
   },
   {
     name: "Standard House",
-    price: "From €450",
-    note: "Up to ~150 m² (e.g. 3-bed semi)",
+    price: "€550",
+    note: "Up to ~175 m²",
     popular: false,
     features: [
       "Everything in Apartment tier",
@@ -42,7 +41,7 @@ const tiers = [
   {
     name: "Large / Period Property",
     price: "From €650",
-    note: "150 m²+ or pre-1970 construction",
+    note: "175 m²+",
     popular: false,
     features: [
       "Everything in Standard tier",
@@ -72,7 +71,7 @@ export function PricingDialog({ trigger }: PricingDialogProps) {
       <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto p-6 sm:p-8">
         <DialogHeader className="mb-2">
           <DialogTitle className="text-2xl font-display font-bold">
-            Pre-Purchase Survey Pricing
+            Pre-Purchase Structural Survey Pricing
           </DialogTitle>
           <p className="text-muted-foreground text-sm mt-1">
             Transparent pricing based on property type. All prices
