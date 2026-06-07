@@ -10,8 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-function scrollToContact(e: React.MouseEvent<HTMLAnchorElement>) {
-  e.preventDefault();
+function scrollToContact() {
   window.history.pushState(null, "", window.location.pathname);
   const target = document.querySelector("#contact");
   if (!target) return;
@@ -130,11 +129,9 @@ export function PricingDialog({
                     {tier.price}
                   </span>
                   <DialogClose asChild>
-                    <a href="#contact" onClick={scrollToContact}>
-                      <Button variant="outline" size="sm">
-                        Get a Quote
-                      </Button>
-                    </a>
+                    <Button variant="outline" size="sm" onClick={scrollToContact}>
+                      Get a Quote
+                    </Button>
                   </DialogClose>
                 </div>
               </div>
