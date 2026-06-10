@@ -46,7 +46,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="pt-8 pb-24 bg-background relative">
+    <section id="contact" className="pt-8 pb-24 bg-background relative scroll-mt-36">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 bg-card rounded-3xl shadow-xl overflow-hidden border border-border">
           

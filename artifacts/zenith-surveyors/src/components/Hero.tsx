@@ -3,12 +3,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 
 function scrollToSection(href: string) {
   window.history.pushState(null, "", window.location.pathname);
-  const target = document.querySelector(href);
-  if (!target) return;
-  const header = document.querySelector("header");
-  const offset = header ? header.offsetHeight : 80;
-  const top = target.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top, behavior: "smooth" });
+  document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 }
 
 export function Hero() {

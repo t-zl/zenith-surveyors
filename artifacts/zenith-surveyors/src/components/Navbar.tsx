@@ -16,21 +16,18 @@ export function Navbar() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    const wasMenuOpen = mobileMenuOpen;
     setMobileMenuOpen(false);
     // Keep URL clean — no hash fragments in the address bar
     window.history.pushState(null, "", window.location.pathname);
+    // Wait for mobile menu close animation (framer-motion ~300ms) before scrolling
     setTimeout(() => {
       if (href === "#") {
         window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
+      } else {
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
       }
-      const target = document.querySelector(href);
-      if (!target) return;
-      const header = document.querySelector("header");
-      const offset = header ? header.offsetHeight : 80;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
-    }, 50);
+    }, wasMenuOpen ? 350 : 50);
   };
 
   const navLinks = [

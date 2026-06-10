@@ -10,7 +10,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-muted/50 overflow-hidden">
+    <section id="about" className="py-24 bg-muted/50 overflow-hidden scroll-mt-36">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -67,12 +67,7 @@ export function About() {
               onClick={(e) => {
                 e.preventDefault();
                 window.history.pushState(null, "", window.location.pathname);
-                const target = document.querySelector("#contact");
-                if (!target) return;
-                const header = document.querySelector("header");
-                const offset = header ? header.offsetHeight : 80;
-                const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top, behavior: "smooth" });
+                document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
               }}
               className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary/90 transition-all duration-300"
             >

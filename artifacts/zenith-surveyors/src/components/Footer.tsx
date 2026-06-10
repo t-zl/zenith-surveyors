@@ -3,14 +3,9 @@ function handleFooterNavClick(e: React.MouseEvent<HTMLAnchorElement>, href: stri
   window.history.pushState(null, "", window.location.pathname);
   if (href === "#") {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    return;
+  } else {
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   }
-  const target = document.querySelector(href);
-  if (!target) return;
-  const header = document.querySelector("header");
-  const offset = header ? header.offsetHeight : 80;
-  const top = target.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top, behavior: "smooth" });
 }
 
 export function Footer() {

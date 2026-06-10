@@ -12,12 +12,7 @@ import { Separator } from "@/components/ui/separator";
 
 function scrollToContact() {
   window.history.pushState(null, "", window.location.pathname);
-  const target = document.querySelector("#contact");
-  if (!target) return;
-  const header = document.querySelector("header");
-  const offset = header ? header.offsetHeight : 80;
-  const top = target.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top, behavior: "smooth" });
+  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
 }
 
 interface PricingTier {
