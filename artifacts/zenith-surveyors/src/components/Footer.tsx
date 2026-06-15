@@ -16,11 +16,16 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div className="space-y-4">
-            <div>
+            <div className="flex flex-col gap-4">
               <img
                 src={`${import.meta.env.BASE_URL}images/zenith_logo_full_white.png`}
                 alt="Zenith Building Surveyors"
-                className="h-24 w-auto max-w-[360px]"
+                className="w-48 h-auto"
+              />
+              <img
+                src={`${import.meta.env.BASE_URL}images/rics-socs-logo_nbg.png`}
+                alt="RICS and Society of Chartered Surveyors Ireland"
+                className="w-50 h-auto"
               />
             </div>
             <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
