@@ -47,6 +47,54 @@ function GoogleLogo() {
   );
 }
 
+type Review = (typeof reviews)[number];
+
+function ReviewCard({ review, index, className }: { review: Review; index: number; className?: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className={`relative bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col ${className ?? ""}`}
+    >
+      {/* Decorative quote icon — only shown when there is review text */}
+      {"text" in review && review.text && (
+        <div className="absolute top-6 right-8 opacity-10">
+          <Quote className="w-16 h-16 text-primary fill-primary" />
+        </div>
+      )}
+
+      <div className="flex items-center justify-between mb-4">
+        <StarRating rating={review.rating} />
+        <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+          <GoogleLogo />
+          <span>Google Review</span>
+        </div>
+      </div>
+
+      {"text" in review && review.text && (
+        <p className="text-foreground text-base leading-relaxed mb-6 relative z-10 flex-1">
+          &ldquo;{review.text}&rdquo;
+        </p>
+      )}
+
+      <div className="flex items-center gap-3 mt-auto">
+        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm font-display flex-shrink-0">
+          {review.name
+            .split(" ")
+            .map((n) => n[0])
+            .join("")}
+        </div>
+        <div>
+          <div className="font-semibold text-foreground text-sm">{review.name}</div>
+          <div className="text-xs text-muted-foreground">Verified Customer</div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export function Reviews() {
   return (
     <section id="testimonials" className="py-24 bg-background overflow-hidden scroll-mt-36">
@@ -70,50 +118,25 @@ export function Reviews() {
           </motion.p>
         </div>
 
-        <div className={`pb-4 mb-10 gap-6 ${reviews.length === 1 ? "flex justify-center" : "flex overflow-x-auto snap-x snap-mandatory scrollbar-none -mx-4 px-4 md:-mx-6 md:px-6 lg:-mx-8 lg:px-8"}`}>
+        <div className="md:hidden pb-4 mb-10 flex overflow-x-auto snap-x snap-mandatory scrollbar-none -mx-4 px-4">
           {reviews.map((review, index) => (
-            <motion.div
+            <ReviewCard
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`relative bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex-shrink-0 snap-start flex flex-col ${reviews.length === 1 ? "w-full max-w-2xl" : "w-[min(400px,80vw)]"}`}
-            >
-              {/* Decorative quote icon — only shown when there is review text */}
-              {"text" in review && review.text && (
-                <div className="absolute top-6 right-8 opacity-10">
-                  <Quote className="w-16 h-16 text-primary fill-primary" />
-                </div>
-              )}
+              review={review}
+              index={index}
+              className="w-[min(85vw,400px)] flex-shrink-0 snap-center"
+            />
+          ))}
+        </div>
 
-              <div className="flex items-center justify-between mb-4">
-                <StarRating rating={review.rating} />
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
-                  <GoogleLogo />
-                  <span>Google Review</span>
-                </div>
-              </div>
-
-              {"text" in review && review.text && (
-                <p className="text-foreground text-base leading-relaxed mb-6 relative z-10 flex-1">
-                  &ldquo;{review.text}&rdquo;
-                </p>
-              )}
-
-              <div className="flex items-center gap-3 mt-auto">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm font-display flex-shrink-0">
-                  {review.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground text-sm">{review.name}</div>
-                  <div className="text-xs text-muted-foreground">Verified Customer</div>
-                </div>
-              </div>
-            </motion.div>
+        <div className="hidden md:grid pb-4 mb-10 gap-6 justify-center md:[grid-template-columns:repeat(auto-fit,minmax(320px,400px))]">
+          {reviews.map((review, index) => (
+            <ReviewCard
+              key={index}
+              review={review}
+              index={index}
+              className={`w-full ${reviews.length === 1 ? "max-w-2xl" : "max-w-[400px]"}`}
+            />
           ))}
         </div>
 
