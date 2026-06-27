@@ -8,11 +8,12 @@ const reviews = [
     text: "We consulted Mike for a snagging to be done for our house last week. He was very prompt, transparent on his rates, punctual in his timings and strong attention to detail. We are happy with his service and strongly recommend his for better reach.",
     source: "Google",
   },
-  // {
-  //   name: "Sara English",
-  //   rating: 5,
-  //   source: "Google",
-  // },
+  {
+    name: "Luke Hallinan",
+    rating: 5,
+    text: "Michael was professional, fast, and a great communicator from start to finish for a survey of our house for opinion on compliance. Would highly recommend!",
+    source: "Google",
+  },
 ];
 
 function StarRating({ rating }: { rating: number }) {
