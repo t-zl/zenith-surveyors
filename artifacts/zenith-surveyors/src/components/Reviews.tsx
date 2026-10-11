@@ -14,6 +14,12 @@ const reviews = [
     text: "Michael was professional, fast, and a great communicator from start to finish for a survey of our house for opinion on compliance. Would highly recommend!",
     source: "Google",
   },
+  {
+    name: "Trish Keenan",
+    rating: 5,
+    text: "Mike completed our house survey for our new home and was such a pleasure to deal with. Buying and moving can be stressful, so it was a breath of fresh air having Mike involved! I have already recommended him to my brother and a friend who are also looking to buy. His report was thorough and on point, and efficient. Honestly couldn't recommend him enough.",
+    source: "Google",
+  }
 ];
 
 function StarRating({ rating }: { rating: number }) {
@@ -74,7 +80,7 @@ function ReviewCard({ review, index, className }: { review: Review; index: numbe
       </div>
 
       {"text" in review && review.text && (
-        <p className="text-foreground text-base leading-relaxed mb-6 relative z-10 flex-1">
+        <p className="text-foreground text-base leading-relaxed mb-6 relative z-10 flex-1 whitespace-pre-line">
           &ldquo;{review.text}&rdquo;
         </p>
       )}
