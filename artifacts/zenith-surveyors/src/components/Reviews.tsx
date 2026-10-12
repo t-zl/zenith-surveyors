@@ -3,9 +3,9 @@ import { Star, Quote } from "lucide-react";
 
 const reviews = [
   {
-    name: "Christy Thomas",
+    name: "Trish Keenan",
     rating: 5,
-    text: "We consulted Mike for a snagging to be done for our house last week. He was very prompt, transparent on his rates, punctual in his timings and strong attention to detail. We are happy with his service and strongly recommend his for better reach.",
+    text: "Mike completed our house survey for our new home and was such a pleasure to deal with. Buying and moving can be stressful, so it was a breath of fresh air having Mike involved! I have already recommended him to my brother and a friend who are also looking to buy. His report was thorough and on point, and efficient. Honestly couldn't recommend him enough.",
     source: "Google",
   },
   {
@@ -15,11 +15,11 @@ const reviews = [
     source: "Google",
   },
   {
-    name: "Trish Keenan",
+    name: "Christy Thomas",
     rating: 5,
-    text: "Mike completed our house survey for our new home and was such a pleasure to deal with. Buying and moving can be stressful, so it was a breath of fresh air having Mike involved! I have already recommended him to my brother and a friend who are also looking to buy. His report was thorough and on point, and efficient. Honestly couldn't recommend him enough.",
+    text: "We consulted Mike for a snagging to be done for our house last week. He was very prompt, transparent on his rates, punctual in his timings and strong attention to detail. We are happy with his service and strongly recommend his for better reach.",
     source: "Google",
-  }
+  },
 ];
 
 function StarRating({ rating }: { rating: number }) {
